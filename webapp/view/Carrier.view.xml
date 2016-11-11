@@ -1,0 +1,27 @@
+<mvc:View xmlns:core="sap.ui.core" 
+xmlns:f="sap.ui.layout.form"
+xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="com.sap.training.controller.Carrier">
+
+	<Page navButtonPress="onNavBack" showNavButton="true"
+		  title="{Carrname}">
+		<content>
+			<Panel class="sapUiResponsiveMargin" width="auto">
+				<content>
+					<f:SimpleForm >
+						<f:content>
+							<Label text="{i18n>idLabelText}"/>
+							<Text text="{Carrid}"/>
+							<Label text="{i18n>nameLabelText}"/>
+							<Text text="{Carrname}"/>
+							<Label text="{i18n>currLabelText}"/>
+							<Text text="{Currcode}"/>
+							<Label text="{i18n>urlLabelText}"/>
+							<Text text="{Url}"/>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+		</content>
+	</Page>
+
+</mvc:View>

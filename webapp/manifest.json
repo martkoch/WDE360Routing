@@ -11,11 +11,20 @@
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"sourceTemplate": {
-			"id": "ui5template.basicSAPUI5ApplicationProject",
-			"version": "1.32.0"
+			"id": "servicecatalog.connectivityComponent",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZBC_TRAVEL_SRV": {
+				"uri": "/sap/opu/odata/sap/ZBC_TRAVEL_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
 		}
 	},
-
 	"sap.ui": {
 		"_version": "1.1.0",
 		"technology": "UI5",
@@ -32,12 +41,8 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": [
-			"sap_hcb",
-			"sap_bluecrystal"
-		]
+		"supportedThemes": ["sap_hcb", "sap_bluecrystal"]
 	},
-
 	"sap.ui5": {
 		"_version": "1.1.0",
 		"rootView": {
@@ -62,11 +67,69 @@
 				"settings": {
 					"bundleName": "com.sap.training.i18n.i18n"
 				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"disableHeadRequestForToken": true,
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZBC_TRAVEL_SRV",
+				"preload": true
 			}
 		},
 		"resources": {
 			"css": [{
 				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+			    "routerClass": "sap.m.routing.Router",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"bypassed": {
+					"target": ["notFound"]
+				},
+				"viewPath": "com.sap.training.view"
+			},
+			"targets": {
+				"overview": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Overview",
+					"viewLevel": 1
+				},
+				"carrier": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Carrier",
+					"viewLevel": 2
+				},
+				"notFound": {
+					"viewType": "XML",
+					"transition": "show",
+					"clearAggregation": true,
+					"viewName": "NotFound",
+					"viewLevel": 3
+				}
+			},
+			"routes": [{
+				"name": "overview",
+				"pattern": "",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["overview"]
+			}, {
+				"name": "carrier",
+				"pattern": "carriers/{carrierId}",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["carrier"]
 			}]
 		}
 	}

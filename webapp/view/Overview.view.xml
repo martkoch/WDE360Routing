@@ -1,0 +1,26 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.sap.training.controller.Overview"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+		<Page title="{i18n>overviewPageTitle}">
+			<content>
+			    <Table noDataText="Drop column list items here and columns in the area above" id="__table0"
+			        items="{/CarrierSet}">
+			        <items>
+			            <ColumnListItem counter="0" id="__item0" press="onPress" type="Navigation">
+			                <cells>
+			                    <ObjectIdentifier xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" title="{Carrid}" id="__identifier0"/>
+			                    <Text text="{Carrname}" maxLines="0" id="__text7"/></cells>
+			            </ColumnListItem></items>
+			        <columns>
+			            <Column id="__column0">
+			                <header>
+			                    <Label text="{i18n>columnId}" id="__label0"/>
+			                </header>
+			            </Column>
+			            <Column id="__column1">
+			                <header>
+			                    <Label text="{i18n>columnName}" id="__label1"/>
+			                </header>
+			            </Column></columns></Table>
+			</content>
+		</Page>
+</mvc:View>
